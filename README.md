@@ -1,40 +1,43 @@
 # 🚀 GigFlow - Micro-SaaS Freelance Marketplace
 
-GigFlow is a modern, real-time freelance marketplace connecting clients with talented freelancers. Built with the **MERN Stack** (MongoDB, Express, React, Node.js) and powered by **Socket.io** for instant notifications.
+GigFlow is a modern, real-time freelance marketplace connecting clients with talented freelancers. It features a seamless user experience, real-time notifications, and a robust hiring workflow.
 
-![GigFlow Banner](https://via.placeholder.com/1200x500?text=GigFlow+Marketplace+Preview)
+![GigFlow Screenshot](https://via.placeholder.com/800x400?text=GigFlow+Preview) *Replace with actual screenshot*
 
 ## ✨ Features
 
-- **🔐 User Authentication**: Secure Login/Register with JWT & HttpOnly Cookies.
-- **💼 Gig Management**: Post, Edit, and Delete gigs. Set budgets in ₹ (Rupees).
-- **📝 Bidding System**: Freelancers can place proposals on open gigs.
-- **⚡ Real-time Notifications**: 
-  - Instant alerts when **Hired**.
-  - Instant alerts when **Rejected**.
-  - Notifications for new **Proposals** (for gig owners).
-- **📊 Interactive Dashboard**: Manage your Gigs and Bids in one place.
-- **🎨 Modern UI**: Built with React + Tailwind CSS for a premium look and feel.
+- **Authentication**: Secure Login/Register (JWT & HttpOnly Cookies).
+- **Gig Management**:
+  - Post new gigs with budget (₹) and detailed descriptions.
+  - Edit and Delete gigs.
+  - Search/Filter gigs.
+- **Bidding System**:
+  - Freelancers can place bids on open gigs.
+  - Clients can view all proposals for their gigs.
+  - **Hiring Logic**: When a freelancer is hired, others are automatically rejected.
+- **Real-Time Notifications 🔔**:
+  - Instant alerts for "Hired", "Rejected", and "New Proposal" events using **Socket.io**.
+  - Notification dropdown in the Navbar.
+- **Dashboard**: Centralized hub to manage your Gigs and Bids.
+- **Responsive Design**: Built with Tailwind CSS for a beautiful, mobile-friendly UI.
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **React (Vite)**: Fast and modern UI library.
-- **Tailwind CSS**: Utility-first styling.
-- **Socket.io-client**: Real-time events.
-- **Axios**: API requests.
+- **React 18** (Vite)
+- **Tailwind CSS** (Styling)
+- **Socket.io Client** (Real-time communication)
+- **Axios** (API requests)
+- **React Router v6** (Navigation)
 
 ### Backend
-- **Node.js & Express**: Robust server framework.
-- **MongoDB & Mongoose**: NoSQL Database (Atlas Cloud).
-- **Socket.io**: Real-time bi-directional communication.
-- **JWT**: Secure authentication.
+- **Node.js & Express**
+- **MongoDB Atlas** (Database)
+- **Mongoose** (ODM)
+- **Socket.io** (WebSockets)
+- **JWT** (Authentication)
 
----
-
-## 🚀 Getting Started
-
-Follow these steps to run the project locally.
+## ⚡ Installation & Setup
 
 ### 1. Clone the Repository
 ```bash
@@ -49,7 +52,6 @@ cd backend
 npm install
 ```
 
-**Configure Environment Variables:**
 Create a `.env` file in the `backend/` directory:
 ```env
 PORT=5000
@@ -58,48 +60,52 @@ JWT_SECRET=your_jwt_secret_key
 NODE_ENV=development
 ```
 
-**Run the Server:**
-```bash
-npm run dev
-```
-*Server runs on http://localhost:5000*
-
 ### 3. Frontend Setup
-Open a new terminal, navigate to the frontend folder:
+Navigate to the frontend folder and install dependencies:
 ```bash
-cd frontend
+cd ../frontend
 npm install
 ```
 
-**Run the Frontend:**
+### 4. Run the Application
+You need to run both backend and frontend servers.
+
+**Terminal 1 (Backend):**
 ```bash
+cd backend
 npm run dev
 ```
-*App runs on http://localhost:5173*
 
----
+**Terminal 2 (Frontend):**
+```bash
+cd frontend
+npm run dev
+```
 
-## 📡 API Endpoints
+Visit `http://localhost:5173` to view the app!
 
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| **Auth** | | |
-| `POST` | `/api/auth/register` | Register new user |
-| `POST` | `/api/auth/login` | Login user |
-| `POST` | `/api/auth/logout` | Logout user |
-| **Gigs** | | |
-| `GET` | `/api/gigs` | Get all open gigs |
-| `POST` | `/api/gigs` | Create a new gig |
-| `GET` | `/api/gigs/:id` | Get gig details |
-| `DELETE` | `/api/gigs/:id` | Delete a gig |
-| `PATCH` | `/api/gigs/:id/hire/:bidId` | Hire a freelancer |
-| **Bids** | | |
-| `POST` | `/api/bids/:gigId` | Place a bid |
-| `GET` | `/api/bids/my-bids` | Get user's bids |
-| `DELETE` | `/api/bids/:id` | Withdraw a bid |
+## 📂 Project Structure
 
----
+```
+gigflow/
+├── backend/            # Express Server & DB Models
+│   ├── config/         # DB Connection
+│   ├── controllers/    # Logic for Auth, Gigs, Bids
+│   ├── middleware/     # Auth Protection
+│   ├── models/         # Mongoose Schemas
+│   ├── routes/         # API Routes
+│   └── socket/         # Socket.io Logic
+│
+└── frontend/           # React Application
+    ├── src/
+    │   ├── components/ # Reusable UI Components
+    │   ├── contexts/   # Auth & Notification Contexts
+    │   ├── pages/      # Application Pages
+    │   └── services/   # API Configuration
+```
 
-## 👤 Author
-**Md Tawfiq**  
-GitHub: [MohamedTawfiq30](https://github.com/MohamedTawfiq30)
+## 🤝 Contributing
+Contributions are welcome! Please open an issue or submit a pull request.
+
+## 📄 License
+This project is open-source and available under the [MIT License](LICENSE).
